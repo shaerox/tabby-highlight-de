@@ -77,7 +77,7 @@ const templates = [
     code: `function replace(input) {
   // Return regexp strings: [ search, replace ]
   // The regex checkbox must be checked
-  return ["Last login:\\\\s*(.*?)\\\\s*from\\\\s*(.*)", "杂鱼～上次是在 $1 从 $2 登录的♡"];
+  return ["Last login:\\\\s*(.*?)\\\\s*from\\\\s*(.*)", "Last login on $1 from $2"];
 }`,
   },
   {
@@ -87,7 +87,7 @@ const templates = [
   // Return regexp strings: [ search, replace ]
   // The regex and case sensitive checkbox is not effect this
   // g flag is required, otherwise error may occur
-  return [ /Last login:\\s*(.*?)\\s*from\\s*(.*)/g, "杂鱼～上次是在 $1 从 $2 登录的♡"];
+  return [ /Last login:\\s*(.*?)\\s*from\\s*(.*)/g, "Last login on $1 from $2"];
 }`,
   },
 ];

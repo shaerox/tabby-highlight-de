@@ -120,7 +120,7 @@ export class HighlightSettingsTabComponent {
 
   currentTheme: string;
   uuidNIL = uuid.NIL;
-  // 兼容设置同步的临时方案喵？
+  // Temporary workaround for config sync compatibility
   get pluginConfig() {
     return this.config.store.highlightPlugin as HighlightPluginConfig;
   }
@@ -135,7 +135,7 @@ export class HighlightSettingsTabComponent {
     private sessionsService: ProfilesService,
     private highlightService: HighlightService
   ) {
-    // 兼容亮色主题太麻烦了喵，先做个基本兼容，以后再说喵
+    // Basic light theme compatibility only
     this.currentTheme = this.config.store.appearance.colorSchemeMode;
     this.verify();
   }
@@ -254,14 +254,14 @@ export class HighlightSettingsTabComponent {
           const color = Color(foregroundColor).hex();
           return color;
         } catch (e) {
-          //假装捕获了异常喵
+          //Catch and ignore errors
         }
       } else if (fgIndex >= 16) {
         try {
           const color = Color.ansi256(fgIndex).hex();
           return color;
         } catch (e) {
-          //假装捕获了异常喵
+          //Catch and ignore errors
         }
       } else {
         return this.getThemeColor(fgIndex);
@@ -279,14 +279,14 @@ export class HighlightSettingsTabComponent {
           const color = Color(backgroundColor).hex();
           return color;
         } catch (e) {
-          //假装捕获了异常喵
+          //Catch and ignore errors
         }
       } else if (bgIndex >= 16) {
         try {
           const color = Color.ansi256(bgIndex).hex();
           return color;
         } catch (e) {
-          //假装捕获了异常喵
+          //Catch and ignore errors
         }
       } else {
         return this.getThemeColor(bgIndex);

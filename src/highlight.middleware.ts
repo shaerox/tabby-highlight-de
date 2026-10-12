@@ -43,8 +43,8 @@ export default class HighlightMiddleware extends SessionMiddleware {
     // }
   }
 
-  // 注意：本插件没有做过性能测试喵，不知道多少关键字是极限喵
-  // PS：其实跑过cacafire，别问喵，问就是卡死了喵
+  // Note: this plugin has not been performance tested, the keyword limit is unknown
+  // PS: tried it with cacafire, it froze
   feedFromSession(data: Buffer): void {
     if (data.length === 0) {
       return super.feedFromSession(data);
@@ -126,14 +126,14 @@ export default class HighlightMiddleware extends SessionMiddleware {
 
             // let searchPattern: RegExp;
             try {
-              // 不管是字符串还是正则，通通用正则来匹配，只不过对于字符串需要一丢丢特殊处理，不然会寄喵
+              // Strings and regexps are both matched as regexps, plain strings just need a little escaping first
               if (!searchPattern) {
                 searchPattern = isRegExp
                   ? new RegExp(`${realSearch}`, regexpFlag)
                   : new RegExp(realSearch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), regexpFlag);
               }
             } catch (e) {
-              // 象征性的捕获并忽略一下错误喵
+              // Catch and ignore errors
               this.toast(
                 "[Highlight] Something wrong when creating RegExp, please check replace settings",
               );
@@ -188,7 +188,7 @@ export default class HighlightMiddleware extends SessionMiddleware {
             matchGroup = "0",
           } = keyword;
 
-          // 未启用的关键字直接跳过喵
+          // Skip disabled keywords
           if (!enabled) {
             continue;
           }
@@ -198,8 +198,8 @@ export default class HighlightMiddleware extends SessionMiddleware {
           let isJSReturnString = false;
           let pattern: RegExp | undefined;
           if (isJS) {
-            // 真的要实现可编程高亮喵？会不会出现什么巨大漏洞然后被超市喵？
-            // 要不要用eval喵？毕竟速度最快喵？
+            // Programmable highlighting: be aware this executes user supplied code
+            // Uses new Function instead of eval
             // const matcher = eval(text);
             // console.log(text);
             let highlightFunc: Function;
@@ -266,12 +266,12 @@ export default class HighlightMiddleware extends SessionMiddleware {
             if (!pattern) {
               try {
                 const regexpFlag = isCaseSensitive ? "gd" : "gid";
-                // 不管是字符串还是正则，通通用正则来匹配，只不过对于字符串需要一丢丢特殊处理，不然会寄喵
+                // Strings and regexps are both matched as regexps, plain strings just need a little escaping first
                 pattern = isRegExp
                   ? new RegExp(`${realText}`, regexpFlag)
                   : new RegExp(realText.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), regexpFlag);
               } catch (e) {
-                // 象征性的捕获并忽略一下错误喵
+                // Catch and ignore errors
                 this.toast(
                   "[Highlight] Something wrong when creating RegExp, please check highlight settings",
                 );
@@ -293,13 +293,13 @@ export default class HighlightMiddleware extends SessionMiddleware {
               }
               let indict: [number, number] = indices[0];
 
-              // 匹配组处理喵
+              // Handle match groups
               if (isMatchGroup) {
                 const group = parseInt(matchGroup);
                 if (!isNaN(group)) {
                   indict = indices[group];
                 } else {
-                  // 命名匹配组处理喵
+                  // Handle named match groups
                   indict = indices.groups?.[matchGroup];
                 }
               }
@@ -323,18 +323,18 @@ export default class HighlightMiddleware extends SessionMiddleware {
           }
         }
 
-        // 如果没有匹配则直接返回，也许能提升一丢丢性能也不一定
+        // Return early if nothing matched
         if (occurrences.length > 0) {
           passthroughFlag = false;
-          // 改为按字符匹配的逻辑，可以解决嵌套问题喵，但……也许有性能问题也不一定(> <)，先就酱喵
+          // Match per character to handle nested matches, may cost some performance
           dataStringHighlighted = "";
           let char = "";
 
           for (let i = 0; i < dataStringReplaced.length; i++) {
-            // 改来改去越来越复杂喵，性能蹭蹭下降喵，建议去用隔壁ElecTerm，自带高亮喵~
+            // This got complex over time, performance may suffer with many keywords
             const subString = dataStringReplaced.slice(i);
 
-            // 其实本来可以把所有的控制字符都strip掉喵，但谁让咱比较好心，还是挨个进行了处理喵
+            // Control sequences are kept and handled one by one instead of being stripped
             const csiSequenceMatch = subString.match(/\x1b\[[0-9;?]*[0-9a-zA-Z@]/);
             if (csiSequenceMatch) {
               if (csiSequenceMatch.index === 0) {
@@ -356,13 +356,13 @@ export default class HighlightMiddleware extends SessionMiddleware {
 
             char = subString[0];
             const charCode = char.charCodeAt(0);
-            // 处理宽字符喵
+            // Handle wide characters
             if (charCode >= 0xd800 && charCode <= 0xdfff) {
               char += subString[1];
               i++;
             }
             if (charCode <= 31 || charCode === 127) {
-              // 不可见字符不处理喵
+              // Skip invisible characters
             } else {
               for (const occurrence of occurrences) {
                 const { start, end, bg, fg, bold, italic, underline, dim, inverse, invisible } =
@@ -380,7 +380,7 @@ export default class HighlightMiddleware extends SessionMiddleware {
                         beginSeq.push(`48;2;${r};${g};${b}`);
                         endSeq.push(`49`);
                       } catch (e) {
-                        //假装捕获了异常喵
+                        //Catch and ignore errors
                       }
                     } else {
                       beginSeq.push(`48;5;${bgIndex}`);
@@ -396,7 +396,7 @@ export default class HighlightMiddleware extends SessionMiddleware {
                         beginSeq.push(`38;2;${r};${g};${b}`);
                         endSeq.push(`39`);
                       } catch (e) {
-                        //假装捕获了异常喵
+                        //Catch and ignore errors
                       }
                     } else {
                       beginSeq.push(`38;5;${fgIndex}`);

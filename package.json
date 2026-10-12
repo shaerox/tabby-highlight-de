@@ -1,17 +1,17 @@
 {
-  "name": "tabby-highlight",
-  "description": "Tabby terminal keyword highlight plugin, support text, regexp, javascript",
+  "name": "tabby-highlight-de",
+  "description": "Tabby keyword highlight plugin (fork of tabby-highlight with German/English UI and defaults)",
   "module": "index.ts",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "type": "commonjs",
   "license": "MIT",
-  "version": "3.0.1",
+  "version": "3.0.1-de.1",
   "repository": {
-    "url": "git+https://github.com/moemoechu/tabby-highlight.git"
+    "url": "git+https://github.com/shaerox/tabby-highlight-de.git"
   },
   "author": {
-    "name": "moemoechu"
+    "name": "shaerox (fork), moemoechu (original)"
   },
   "keywords": [
     "tabby-plugin",

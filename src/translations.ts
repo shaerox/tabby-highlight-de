@@ -112,4 +112,215 @@ export const translations: [string, HighlightPluginTranslations][] = [
       "[Replace]Return regexp and string": "【替换】返回正则和字符串",
     },
   ],
+  [
+    "de-DE",
+    {
+      "Highlight":
+        "Hervorhebung",
+      "Enable highlight":
+        "Hervorhebung aktivieren",
+      "Highlight master switch":
+        "Hauptschalter für die Hervorhebung",
+      "Change any setting of highlight only apply in new sessions.":
+        "Änderungen an der Hervorhebung gelten nur für neue Sitzungen.",
+      "Change any setting of replace only apply in new sessions.":
+        "Änderungen an der Ersetzung gelten nur für neue Sitzungen.",
+      "Highlight applied!":
+        "Hervorhebung angewendet!",
+      "ON":
+        "AN",
+      "Keyword":
+        "Schlüsselwort",
+      "Foreground Color":
+        "Textfarbe",
+      "Background Color":
+        "Hintergrundfarbe",
+      "DEL":
+        "LÖSCHEN",
+      "RegExp":
+        "RegEx",
+      "Case sensitive":
+        "Groß-/Kleinschreibung beachten",
+      "[Highlight] Something wrong when creating RegExp, please check highlight settings":
+        "[Hervorhebung] Fehler beim Erstellen eines regulären Ausdrucks, bitte die Einstellungen prüfen",
+      "The following regexp is not valid:\n":
+        "Folgender regulärer Ausdruck ist ungültig:\n",
+      "Everything looks good.":
+        "Alles in Ordnung.",
+      "Style":
+        "Stil",
+      "Bold":
+        "Fett",
+      "Italic":
+        "Kursiv",
+      "Underline":
+        "Unterstrichen",
+      "Dim":
+        "Abgedunkelt",
+      "Case":
+        "Groß/Klein",
+      "Import":
+        "Importieren",
+      "Drag the ON button may reorder the keyword.":
+        "Über den AN-Schalter lassen sich die Schlüsselwörter per Drag & Drop umsortieren.",
+      "Drag the ON button may reorder the pattern.":
+        "Über den AN-Schalter lassen sich die Muster per Drag & Drop umsortieren.",
+      "Profile name":
+        "Profilname",
+      "Active tab is the global highlight profile.":
+        "Der aktive Reiter ist das globale Profil.",
+      "Double click tab can change profile name.":
+        "Doppelklick auf einen Reiter benennt das Profil um.",
+      "Keyword on top get high priority.":
+        "Das oberste Schlüsselwort hat die höchste Priorität.",
+      "?":
+        "?",
+      "Enable per session profile":
+        "Profil pro Verbindung aktivieren",
+      "Enable per session group profile":
+        "Profil pro Gruppe aktivieren",
+      "Enable per session type profile":
+        "Profil pro Verbindungstyp aktivieren",
+      "Enable global profile":
+        "Globales Profil aktivieren",
+      "No session selected":
+        "Keine Verbindung ausgewählt",
+      "Disable Highlight":
+        "Hervorhebung deaktivieren",
+      "Global profile is the active tab below":
+        "Das globale Profil ist der aktive Reiter unten",
+      "Profile":
+        "Profil",
+      "Session":
+        "Verbindung",
+      "Session Group":
+        "Gruppe",
+      "Session Type":
+        "Verbindungstyp",
+      "No session group selected":
+        "Keine Gruppe ausgewählt",
+      "No session type selected":
+        "Kein Verbindungstyp ausgewählt",
+      "The profile selection order is session > group > type > global.":
+        "Reihenfolge der Profilauswahl: Verbindung > Gruppe > Typ > Global.",
+      "Enable replace":
+        "Ersetzen aktivieren",
+      "Replace master switch":
+        "Hauptschalter für das Ersetzen",
+      "Search Pattern":
+        "Suchmuster",
+      "Replace Pattern":
+        "Ersetzungsmuster",
+      "[Highlight] Can not change session profile due to per session profile not enabled":
+        "[Hervorhebung] Profil kann nicht geändert werden, weil Profile pro Verbindung nicht aktiviert sind",
+      "Replacement processed from top to end.":
+        "Ersetzungen werden von oben nach unten abgearbeitet.",
+      'If you want to add a new line, add "\\n" to the replace pattern.':
+        'Für einen Zeilenumbruch "\\n" im Ersetzungsmuster verwenden.',
+      "Disable replace in alternate screen":
+        "Ersetzen im alternativen Bildschirm deaktivieren",
+      "Disable highlight in alternate screen":
+        "Hervorhebung im alternativen Bildschirm deaktivieren",
+      "For example: vi/vim":
+        "Zum Beispiel: vi/vim",
+      "Extra settings":
+        "Weitere Einstellungen",
+      "Match group":
+        "Treffergruppe",
+      "Styles":
+        "Stile",
+      "Remark":
+        "Bemerkung",
+      "Use number 0-15 for ANSI color(themed), 16-256 for ANSI 256 color, #RRGGBB for RGB color (i.e. #ffd0f2), or color name(i.e. orange)":
+        "Zahl 0-15 für ANSI-Farben (vom Farbschema), 16-256 für ANSI-256-Farben, #RRGGBB für RGB-Farben (z.B. #ffd0f2) oder einen Farbnamen (z.B. orange)",
+      "Single":
+        "Einfach",
+      "Double":
+        "Doppelt",
+      "Curly":
+        "Gewellt",
+      "Dotted":
+        "Gepunktet",
+      "Dashed":
+        "Gestrichelt",
+      "Inverse":
+        "Invertiert",
+      "Invisible":
+        "Unsichtbar",
+      "DEBUG mode":
+        "DEBUG-Modus",
+      "Enable debug mode, this may decrease performance, use with caution":
+        "Debug-Modus aktivieren, kann die Leistung verringern, mit Vorsicht verwenden",
+      "Debug terminal output":
+        "Terminalausgabe debuggen",
+      "Print terminal raw output to devtools, use with caution":
+        "Rohe Terminalausgabe in die Entwicklertools schreiben, mit Vorsicht verwenden",
+      "Debug plugin output":
+        "Plugin-Ausgabe debuggen",
+      "Print plugin proceeded output to devtools, use with caution":
+        "Vom Plugin verarbeitete Ausgabe in die Entwicklertools schreiben, mit Vorsicht verwenden",
+      "Format":
+        "Formatieren",
+      "Edit Keyword":
+        "Schlüsselwort bearbeiten",
+      "[Highlight] Something wrong when creating JS Function, please check highlight settings":
+        "[Hervorhebung] Fehler beim Erstellen der JS-Funktion, bitte die Einstellungen prüfen",
+      "[Highlight] Something wrong when execute JS Function, please check highlight settings":
+        "[Hervorhebung] Fehler beim Ausführen der JS-Funktion, bitte die Einstellungen prüfen",
+      "Click expand to edit.":
+        "Zum Bearbeiten aufklappen.",
+      "Edit JavaScript":
+        "JavaScript bearbeiten",
+      "Edit Text":
+        "Text bearbeiten",
+      "Regular Expression":
+        "Regulärer Ausdruck",
+      "Expand edit":
+        "Erweitert bearbeiten",
+      "[Deleted Session]":
+        "[Gelöschte Verbindung]",
+      "[Deleted Group]":
+        "[Gelöschte Gruppe]",
+      "[Unknown Type]":
+        "[Unbekannter Typ]",
+      "Select template":
+        "Vorlage auswählen",
+      "Apply Template":
+        "Vorlage anwenden",
+      "[Highlight]Return pos array":
+        "[Hervorhebung] Positionsarray zurückgeben",
+      "[Highlight]Return substring":
+        "[Hervorhebung] Teilstring zurückgeben",
+      "[Highlight]Return regexp string":
+        "[Hervorhebung] RegEx-String zurückgeben",
+      "[Highlight]Return regexp":
+        "[Hervorhebung] RegEx-Objekt zurückgeben",
+      "[Replace]Return replaced string":
+        "[Ersetzen] Ersetzten String zurückgeben",
+      "[Replace]Return string array":
+        "[Ersetzen] String-Array zurückgeben",
+      "[Replace]Return regexp string array":
+        "[Ersetzen] RegEx-String-Array zurückgeben",
+      "[Replace]Return regexp and string":
+        "[Ersetzen] RegEx und String zurückgeben",
+      "Delete":
+        "Löschen",
+      "Disable Replace":
+        "Ersetzen deaktivieren",
+      "Enable":
+        "Aktivieren",
+      "Javascript":
+        "JavaScript",
+      "Cancel":
+        "Abbrechen",
+      "Add":
+        "Hinzufügen",
+      "Export":
+        "Exportieren",
+      "Replace":
+        "Ersetzen",
+      "Advanced":
+        "Erweitert",
+    },
+  ],
 ];

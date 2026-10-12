@@ -27,7 +27,7 @@ const nullProfile: HighlightProfile = { id: uuid.NIL, name: "Disable highlight",
 @Injectable({ providedIn: "root" })
 export class HighlightService {
   private logger: Logger;
-  // 兼容设置同步的临时方案喵？
+  // Temporary workaround for config sync compatibility
   get pluginConfig(): HighlightPluginConfig {
     return this.config.store.highlightPlugin as HighlightPluginConfig;
   }
@@ -55,7 +55,7 @@ export class HighlightService {
     });
   }
 
-  // 高亮相关方法喵
+  // Highlight methods
   getHighlightProfiles(appendNil?: boolean) {
     if (appendNil) {
       return [nullProfile].concat(this.pluginConfig.highlightProfiles);
@@ -119,7 +119,7 @@ export class HighlightService {
     this.saveConfig();
   }
 
-  // 单会话相关方法喵
+  // Per session methods
   addHighlightPerSessionProfileMap(sessionId: string = uuid.NIL, profileId: string = uuid.NIL) {
     this.pluginConfig.highlightPerSessionProfileMap.push({
       sessionId,
@@ -147,7 +147,7 @@ export class HighlightService {
     );
   }
 
-  // 单会话分组相关方法喵
+  // Per session group methods
   addHighlightPerSessionGroupProfileMap(groupId: string = uuid.NIL, profileId: string = uuid.NIL) {
     this.pluginConfig.highlightPerSessionGroupProfileMap.push({
       groupId,
@@ -175,7 +175,7 @@ export class HighlightService {
     );
   }
 
-  // 单会话类型相关方法喵
+  // Per session type methods
   addHighlightPerSessionTypeProfileMap(typeId: string = uuid.NIL, profileId: string = uuid.NIL) {
     this.pluginConfig.highlightPerSessionTypeProfileMap.push({
       typeId,
@@ -266,7 +266,7 @@ export class HighlightService {
     );
   }
 
-  // 替换相关方法
+  // Replace methods
   getReplaceProfiles(appendNil?: boolean) {
     if (appendNil) {
       return [{ id: uuid.NIL, name: this.translate.instant("Disable Replace") }].concat(
@@ -320,7 +320,7 @@ export class HighlightService {
     const newPattern: ReplacePattern = {
       enabled: false,
       search: "INFO",
-      replace: "信息",
+      replace: "Info",
     };
     const targetProfile = id ? this.getReplaceProfileById(id) : this.getCurrentReplaceProfile();
 
@@ -420,7 +420,7 @@ export class HighlightService {
     highlightProfile?: HighlightProfile,
     replaceProfile?: ReplaceProfile,
   ) {
-    // 将配置狠狠地注入到标签页喵，方便使用右键菜单切换喵~
+    // Inject the profile into the tab so it can be switched via the context menu
     tab.highlightProfile = highlightProfile;
     tab.replaceProfile = replaceProfile;
   }
@@ -428,22 +428,22 @@ export class HighlightService {
   injectHighlightToTab(tab: HighlightEngagedTab) {
     let highlightProfile: HighlightProfile;
     if (this.pluginConfig.highlightEnabled) {
-      // 会话配置判定喵~
+      // Per session profile
       if (!highlightProfile && this.pluginConfig.highlightPerSessionEnabled) {
         highlightProfile = this.getHighlightProfileBySessionId(tab.profile.id);
       }
 
-      // 会话分组配置判定喵~
+      // Per session group profile
       if (!highlightProfile && this.pluginConfig.highlightPerSessionGroupEnabled) {
         highlightProfile = this.getHighlightProfileBySessionGroupId(tab.profile.group);
       }
 
-      // 会话类型配置判定喵~
+      // Per session type profile
       if (!highlightProfile && this.pluginConfig.highlightPerSessionTypeEnabled) {
         highlightProfile = this.getHighlightProfileBySessionTypeId(tab.profile.type);
       }
 
-      // 全局配置判定喵~
+      // Global profile
       if (!highlightProfile && this.pluginConfig.highlightGlobalEnabled) {
         highlightProfile = this.getCurrentHighlightProfile();
       }
@@ -451,13 +451,13 @@ export class HighlightService {
 
     let replaceProfile: ReplaceProfile;
     if (this.pluginConfig.replaceEnabled) {
-      // 全局配置判定喵~
+      // Global profile
       if (!replaceProfile) {
         replaceProfile = this.getCurrentReplaceProfile();
       }
     }
 
-    // 不存在的配置喵（通常没有这种情况喵，但万一捏？）
+    // Profile not found (should not happen)
     if (!highlightProfile && !replaceProfile) {
       return;
     }
