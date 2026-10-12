@@ -1,0 +1,77 @@
+{
+  "name": "Logs DE/EN",
+  "keywords": [
+    {
+      "text": "\\b(FATAL|CRITICAL|KRITISCH)\\b",
+      "enabled": true,
+      "isRegExp": true,
+      "isCaseSensitive": false,
+      "foreground": true,
+      "foregroundColor": "15",
+      "background": true,
+      "backgroundColor": "1",
+      "bold": true,
+      "remark": "Schwerwiegend"
+    },
+    {
+      "text": "\\b(ERROR|ERR|FEHLER|EXCEPTION|FAILED|FEHLGESCHLAGEN)\\b",
+      "enabled": true,
+      "isRegExp": true,
+      "isCaseSensitive": false,
+      "foreground": true,
+      "foregroundColor": "15",
+      "background": true,
+      "backgroundColor": "1",
+      "bold": false,
+      "remark": "Fehler"
+    },
+    {
+      "text": "\\b(WARN|WARNING|WARNUNG)\\b",
+      "enabled": true,
+      "isRegExp": true,
+      "isCaseSensitive": false,
+      "foreground": true,
+      "foregroundColor": "0",
+      "background": true,
+      "backgroundColor": "3",
+      "bold": false,
+      "remark": "Warnungen"
+    },
+    {
+      "text": "\\b(INFO|HINWEIS)\\b",
+      "enabled": true,
+      "isRegExp": true,
+      "isCaseSensitive": false,
+      "foreground": true,
+      "foregroundColor": "0",
+      "background": true,
+      "backgroundColor": "6",
+      "bold": false,
+      "remark": "Info"
+    },
+    {
+      "text": "\\b(DEBUG|TRACE)\\b",
+      "enabled": true,
+      "isRegExp": true,
+      "isCaseSensitive": false,
+      "foreground": true,
+      "foregroundColor": "15",
+      "background": true,
+      "backgroundColor": "8",
+      "bold": false,
+      "remark": "Debug"
+    },
+    {
+      "text": "\\b(OK|SUCCESS|ERFOLGREICH)\\b",
+      "enabled": true,
+      "isRegExp": true,
+      "isCaseSensitive": false,
+      "foreground": true,
+      "foregroundColor": "0",
+      "background": true,
+      "backgroundColor": "2",
+      "bold": false,
+      "remark": "Erfolg"
+    }
+  ]
+}
